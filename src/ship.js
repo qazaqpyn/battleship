@@ -1,5 +1,7 @@
 const Ship = (position) => {
 
+    const getInfo = () => position;
+
     const getLength = () => position.length;
 
     const hit = (number) => {
@@ -21,7 +23,7 @@ const Ship = (position) => {
         return true;
     }
 
-    return {getLength, hit, isSunk}
+    return {getLength, hit, isSunk, getInfo}
 }
 
 module.exports = Ship;
