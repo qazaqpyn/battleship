@@ -2,6 +2,10 @@ const Ship = require('./ship')
 
 const GameBoard = () => {
     const types = [1,2,3,3,5];
+    //TODO:
+    // create different spots for enemy and for yourself
+    // algorithm for correctly placing ships
+    //testing
     let ships = [];
     let missedCoordinates = [];
 
