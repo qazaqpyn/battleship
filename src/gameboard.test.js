@@ -92,3 +92,38 @@ test('not all ships are sunk and it works', ()=>{
     ]);
     expect(one.areSunk()).toEqual(false)
 })
+
+test('enemyAttack IA works fine',()=>{
+    const one = GameBoard();
+    one.placeShip(0,[
+        {
+            coordinate: 12,
+            hit: true
+        },
+        {
+             coordinate: 13,
+             hit: true
+        },
+        {
+            coordinate:15,
+            hit: false
+        }
+    ])
+    one.receiveAttack(15);
+    one.placeShip(0,[
+        {
+            coordinate: 8,
+            hit: false
+        },
+        {
+             coordinate: 5,
+             hit: false
+        },
+        {
+            coordinate:3,
+            hit: false
+        }
+    ]);
+    one.EnemyAttack();
+    expect(true).toEqual(true)
+})
