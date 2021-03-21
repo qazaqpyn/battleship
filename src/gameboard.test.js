@@ -1,5 +1,4 @@
 const GameBoard = require('./gameboard');
-const Ship = require('./ship');
 
 test('placing ship and get list of ships works fine',()=>{
     const one = GameBoard();
@@ -109,7 +108,7 @@ test('enemyAttack IA works fine',()=>{
             hit: false
         }
     ])
-    one.receiveAttack(15);
+    one.switchTurn()
     one.placeShip(0,[
         {
             coordinate: 8,
@@ -126,4 +125,45 @@ test('enemyAttack IA works fine',()=>{
     ]);
     one.EnemyAttack();
     expect(true).toEqual(true)
+})
+
+test('switchs the turn',()=>{
+    const one = GameBoard();
+    one.switchTurn()
+    expect(one.whoTurn()).toBe(false);
+})
+
+test('placing several ships',()=>{
+    const one = GameBoard();
+    one.placeShip(0,[
+        {
+            coordinate: 8,
+            hit: true
+        },
+        {
+             coordinate: 5,
+             hit: true
+        },
+        {
+            coordinate:3,
+            hit: true
+        }
+    ]);
+    one.placeShip(0,[
+        {
+            coordinate: 18,
+            hit: true
+        },
+        {
+             coordinate: 15,
+             hit: false
+        },
+        {
+            coordinate:13,
+            hit: true
+        }
+    ]);
+    // one.receiveAttack(3);
+    one.receiveAttack(15);
+    expect(one.areSunk()).toBe(true)
 })

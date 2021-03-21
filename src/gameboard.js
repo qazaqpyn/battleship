@@ -54,7 +54,6 @@ const GameBoard = () => {
         playerTurn
             ?(player.ships.some(hit) ? true : player.missedCoordinates.push(coordinate))
             :(enemy.ships.some(hit) ? true : enemy.missedCoordinates.push(coordinate))
-        playerTurn=!playerTurn;
     }
 
     const enemyInfo = ()=>{
@@ -68,7 +67,15 @@ const GameBoard = () => {
             :enemy.ships.every(sunk)
     }
 
-    return {placeShip, getShips, receiveAttack, areSunk, missedCoordinates, EnemyAttack,enemyInfo};
+    const switchTurn = () => {
+        playerTurn = !playerTurn;
+    }
+
+    const whoTurn = () => {
+        return playerTurn;
+    }
+
+    return {placeShip, getShips, receiveAttack, areSunk, missedCoordinates, EnemyAttack,enemyInfo, switchTurn, whoTurn};
 }
 
 module.exports = GameBoard;
